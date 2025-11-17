@@ -28,7 +28,7 @@ public class Main {
 
 		try {
 			// Le dices que el objeto lea el Json y lo construya en diisfraz
-			disfraz = mapper.readValue(json, Disfraz.class); // d.getClass());
+			disfraz = mapper.readValue(json, Disfraz.class); // disfraz.getClass());
 			System.out.println(disfraz);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
