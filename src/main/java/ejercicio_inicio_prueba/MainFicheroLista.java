@@ -1,12 +1,10 @@
 package ejercicio_inicio_prueba;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -15,7 +13,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class MainFicheroLista {
 
 	public static void main(String[] args) {
-		Scanner entrada;
 		List<Disfraz> lista;
 		try {
 			ObjectMapper mapper = new ObjectMapper();
@@ -24,15 +21,13 @@ public class MainFicheroLista {
 			if (fichero.exists()) {
 				// PARA LEER
 				lista = new ArrayList<>();
-				entrada = new Scanner(new FileInputStream(fichero));
 				System.out.println("JSON lecutra:");
-				lista = mapper.readValue(entrada.nextLine(), new TypeReference<List<Disfraz>>() {
+				lista = mapper.readValue(fichero, new TypeReference<List<Disfraz>>() {
 				});
 				for (Disfraz d : lista) {
 					System.out.println(d.getTalla() + " - " + d.getTema() + " - " + d.getSomb().getTipo() + " - "
 							+ d.getSomb().isAdornado());
 				}
-				entrada.close();
 			}
 			// PARA ESCRIBIR (se va a escribir [numDisfraces] objetos con los mismos
 			// valores)
