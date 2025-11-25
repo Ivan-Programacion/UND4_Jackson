@@ -4,21 +4,21 @@ import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties({ "height", "mass", "hair_color", "skin_color", "eye_color", "birth_year", "gender", "homeworld",
-		"species", "starships", "created", "edited", "url" })
+@JsonIgnoreProperties({ "hair_color", "skin_color", "eye_color", "birth_year", "species", "starships", "created",
+		"edited", "url" })
 public class Personaje {
 	private String name;
 	private ArrayList<String> films;
 	private ArrayList<String> vehicles;
-	// Lo demás no es necesario
 	private String height;
 	private String mass;
+	private String homeworld; // "homeworld": "https://swapi.dev/api/planets/1/"
+	// Lo demás no es necesario
 	private String hair_color;
 	private String skin_color;
 	private String eye_color;
 	private String birth_year;
 	private String gender;
-	private String homeworld; // "homeworld": "https://swapi.dev/api/planets/1/"
 	private String[] species;
 	private String[] starships;
 	private String created;
@@ -157,4 +157,10 @@ public class Personaje {
 	public String toString() {
 		return "Personaje [name=" + name + ", films=" + films + ", vehicles=" + vehicles + "]";
 	}
+
+	public String datos(Planeta miPlaneta) {
+		return "Nombre: " + name + "\nGénero: " + gender + "\nAltura: " + height + " cm\nPeso: " + mass
+				+ " kg\nPlaneta natal: " + miPlaneta.getName();
+	}
+
 }
